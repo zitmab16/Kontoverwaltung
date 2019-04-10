@@ -28,7 +28,7 @@ public class AccountUser extends Thread {
 
     @Override
     public void run() {
-        while (true) {
+        for (int i = 0; i < 10; i++) {
             withordep = rand.nextBoolean();
             value = rand.nextInt(50 - 10 + 1) + 10;
             time = rand.nextInt(1000 - 1 + 1) + 1;
@@ -45,11 +45,14 @@ public class AccountUser extends Thread {
                 }
                 konto.withdraw(value);
                 gui.updateBalance(konto.getBalance());
-                gui.updateTextArea(String.format("%s makes withdrawel: %d \n",username,value));
+                gui.updateTextArea(String.format("%s makes withdrawel: %d \n", username, value));
             } else {
                 konto.deposit(value);
                 gui.updateBalance(konto.getBalance());
-                gui.updateTextArea(String.format("%s makes deposit: %d \n",username,value));
+                gui.updateTextArea(String.format("%s makes deposit: %d \n", username, value));
+            }
+            if (i == 9) {
+                gui.updateTextArea(String.format("%s has finished \n", username));
             }
         }
 
@@ -57,8 +60,7 @@ public class AccountUser extends Thread {
 
     @Override
     public String toString() {
-        return String.format("%s",username);
+        return String.format("%s", username);
     }
-    
 
 }
