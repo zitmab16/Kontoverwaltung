@@ -8,6 +8,6 @@
  *
  * @author vizug
  */
-public class KontoBenutzer {
+public class Main {
     
 }
